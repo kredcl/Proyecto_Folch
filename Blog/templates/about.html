@@ -1,0 +1,29 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">Quienes Somos?¿</h1>
+            <p class="lead mb-0">de donde salio este superblog!</p>
+        </div>
+    </div>
+</header>
+
+{{mensaje}}
+<div style="display: flex; justify-content: center; align-items: flex-start; padding: 20px;">
+    <div style="width: 70%; padding-right: 20px;">
+        <h1 style="font-size: 36px; color: #333; font-family: 'Arial', sans-serif;">Bienvenidos a <span style="color: #ff6600;">BloGenial</span></h1>
+        <h4 style="font-size: 18px; color: #666; font-family: 'Arial', sans-serif;"></h4>
+        <p style="font-size: 16px; color: #444; font-family: 'Arial', sans-serif;">Somos una comunidad comprometida con la creación de un espacio donde personas de todo el mundo puedan compartir sus pasiones y experiencias. Desde consejos prácticos hasta reflexiones personales, nuestro blog ofrece una variedad de contenido para inspirar y conectar a nuestros lectores.</p>
+        <p style="font-size: 16px; color: #444; font-family: 'Arial', sans-serif;">Nos esforzamos por fomentar un ambiente de apoyo y colaboración. Cada contribución es valiosa y cada historia compartida enriquece nuestra comunidad. Únete a nosotros y sé parte de esta emocionante aventura de descubrimiento y crecimiento.</p>
+        <p style="font-size: 16px; color: #444; font-family: 'Arial', sans-serif;">Explora, comparte, disfruta y, sobre todo, ¡saborea la vida con Ñami!</p>
+    </div>
+    <div style="width: 30%; border: 1px solid #ccc; padding: 20px;">
+        <h2 style="font-size: 24px; color: #333; font-family: 'Arial', sans-serif;">Más información</h2>
+        <p style="font-size: 16px; color: #444; font-family: 'Arial', sans-serif;">Aquí puedes agregar más información, enlaces útiles, noticias recientes, etc.</p>
+    </div>
+</div>
+                       
+                        
+                        {% endblock %}

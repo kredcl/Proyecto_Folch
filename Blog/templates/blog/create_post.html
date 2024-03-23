@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+<!-- Page header with logo and tagline-->
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">Crea tu Post!!</h1>
+            <p class="lead mb-0">crea un post de tu ultimo plato bien sabrosooo!</p>
+        </div>
+    </div>
+</header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Post</title>
+</head>
+<body>
+    <h1>Crear Nuevo Post</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Post</button>
+    </form>
+</body>
+</html>
+{% endblock %}

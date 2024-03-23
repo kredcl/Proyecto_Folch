@@ -1,0 +1,32 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+    {% if user_is_admin %}
+        <h1>Admin Dashboard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Contenido</th>
+                    <th>Número de Comentarios</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                    <tr>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.content }}</td>
+                        <td><a href="{% url 'post_comments' pk=post.pk %}">{{ post.comment_set.count }}</a></td>
+                        <td><a href="#!">Editar</a></td>
+                        <td><a href="{% url 'admin_delete_post' pk=post.pk %}">Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No tienes permiso para acceder a esta página.</p>
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Publicación</title>
+</head>
+<body>
+    <h1>Editar Publicación</h1>
+    <form id="edit-post-form-{{ post.pk }}" action="{% url 'edit_post' pk=post.pk %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="post_id" value="{{ post.pk }}">
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}">
+        </div>
+        <div class="form-group">
+            <label for="content">Contenido:</label>
+            <textarea class="form-control" id="content" name="content">{{ post.content }}</textarea>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="confirmSaveChanges({{ post.pk }})">Guardar Cambios</button>
+    </form>
+</body>
+</html>
+<script>
+    function confirmSaveChanges(postId) {
+        if (confirm("¿Estás seguro de que quieres guardar los cambios en esta publicación?")) {
+            document.getElementById("edit-post-form-" + postId).submit();
+        }
+    }
+</script>

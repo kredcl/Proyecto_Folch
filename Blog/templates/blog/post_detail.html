@@ -1,0 +1,62 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Publicación</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .post-details {
+            text-align: center;
+        }
+        .sidebar {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="post-details">
+            <h1>{{ post.title }}</h1>
+            <p>Por {{ post.author.username }} el {{ post.date_posted }}</p>
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 100%;">
+            <p>{{ post.content }}</p>
+            <hr>
+            <h2>Comentarios</h2>
+            {% for comment in comments %}
+                <p><strong>{{ comment.author.username }}</strong>: {{ comment.content }}</p>
+                <p>Fecha de publicación: {{ comment.date_posted }}</p>
+                <hr>
+            {% empty %}
+                <p>No hay comentarios aún.</p>
+            {% endfor %}
+            <!-- Formulario para agregar comentarios -->
+            {% if user.is_authenticated %}
+                <h3>Agregar Comentario</h3>
+                <form method="post" action="{% url 'add_comment_to_post' pk=post.pk %}">
+                    {% csrf_token %}
+                    <p><textarea name="content" cols="30" rows="4" placeholder="Escribe tu comentario aquí"></textarea></p>
+                    <button type="submit">Enviar Comentario</button>
+                </form>
+            {% else %}
+                <p>Por favor, <a href="{% url 'login_usuario' %}">inicia sesión</a> para dejar un comentario.</p>
+            {% endif %}
+        </div>
+        <div class="sidebar">
+            <h2>Información Adicional</h2>
+            <p>Agrega aquí información adicional sobre la publicación, enlaces relacionados, etc.</p>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

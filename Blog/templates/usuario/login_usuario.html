@@ -1,0 +1,32 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block contenido %}
+
+{{mensaje}}
+
+<div style="display: flex; justify-content: center; align-items: flex-start; padding: 20px;">
+    <div style="width: 70%; padding-right: 20px;">
+        <h1 style="font-size: 36px; color: #333; font-family: 'Arial', sans-serif;">Iniciar sesión</h1>
+        <form method="post" style="margin-top: 20px;">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ formu.username.label_tag }}
+                {{ formu.username }}
+            </div>
+            <div class="mb-3">
+                {{ formu.password.label_tag }}
+                {{ formu.password }}
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+        <p>¿Aun no te registras? <a href="{% url 'registro' %}">Registrarse</a>.</p>
+    </div>
+    <div style="width: 30%; border: 1px solid #ccc; padding: 20px;">
+        <h2 style="font-size: 24px; color: #333; font-family: 'Arial', sans-serif;">Side Widget</h2>
+        <div class="card mb-4">
+            <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
